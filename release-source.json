@@ -1,0 +1,8 @@
+{
+  "tag": "v0.2.0-sideload",
+  "name": "BlackForestShop-0.2.0-sideload.apk",
+  "title": "Black Forest Shop 0.2.0 (sideload)",
+  "url": "https://litter.catbox.moe/t03oel.apk",
+  "sha256": "cdfd99925c6cd001c4d97d18b532e3bfd751bc90fd19ac7d0af2e3b14057624a",
+  "notes": "Public sideload APK for Black Forest Shop Android 0.2.0 (lot photos). Source stays private in blackforest-android.\n\n**Debug-signed** (Android Debug keystore) — testing/sideload only, not Play Store.\n\nLot photos need shop site beta 0.1.43+ and Connect Google Drive as service@ on Dev. Phone keeps shots and retries on 503 drive_not_connected."
+}
