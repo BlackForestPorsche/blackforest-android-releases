@@ -12,7 +12,7 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Download APK, verify, create release
+      - name: Download or assemble APK, verify, create release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -23,7 +23,12 @@ jobs:
           TITLE=$(jq -r .title "$SRC")
           URL=$(jq -r .url "$SRC")
           SHA=$(jq -r .sha256 "$SRC")
-          curl -fsSL -o "$NAME" "$URL"
+          if [[ "$URL" == staging:* ]]; then
+            DIR="${URL#staging:}"
+            cat "$DIR"/part-* | base64 -d > "$NAME"
+          else
+            curl -fsSL -o "$NAME" "$URL"
+          fi
           echo "$SHA  $NAME" | sha256sum -c
           file "$NAME"
           NOTES=$(jq -r .notes "$SRC")
